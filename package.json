@@ -1,0 +1,15 @@
+{
+  "name": "auxiliary-socket-server",
+  "version": "0.0.1",
+  "description": "socket server prototype",
+  "dependencies": {
+    "express": "~4.10.6",
+    "socket.io": "~1.2.1",
+    "collections": "~1.2.1",
+    "node-cache": "~1.0.3",
+    "body-parser": "~1.10.0",
+    "multer": "~0.1.6",
+    "array-events": "~0.1.3-beta",
+    "nodemailer": "~1.3.2"
+  }
+}
