@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        title= "Новые сообщения"
+    body
+        h1 #{email}
+        if correspondences.length > 0
+            div
+                h1 Новые сообщения!
+                ul
+                    each corr in correspondences
+                        li #{corr.count} сообщений по запросу #{corr.name}
+        if requests.length > 0
+            div
+                h1 Новые запросы!
+                ul
+                    each tuple in requests
+                        li
+                            a(href="#{tuple.link}") #{tuple.name}
