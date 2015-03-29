@@ -41,10 +41,8 @@ module.exports = {
                     }
                 }
                 if(value.requests.length > 0){
-                    console.log('component requests before: ', value.requests.length);
                     socket.emit('componentRequest', value.requests.length);
                     value.requests = [];
-                    console.log('component requests after: ', value.requests.length);
                 }
             }
         };

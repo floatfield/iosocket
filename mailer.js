@@ -1,10 +1,10 @@
 var path             = require('path')
     , templatesDir   = path.resolve(__dirname, 'templates')
-    , emailTemplates = require('email-templates');
-var nodemailer = require('nodemailer');
+    , emailTemplates = require('email-templates')
+    ,nodemailer = require('nodemailer')
+    ,schedule = require('node-schedule')
+    ,R = require('ramda');
 //var smtpPool = require('nodemailer-smtp-pool');
-var schedule = require('node-schedule');
-var R = require('ramda');
 
 function sendEmails(users){
     emailTemplates(templatesDir, function(err, template) {
@@ -18,9 +18,10 @@ function sendEmails(users){
                         console.log('the first one: ', err);
                     } else {
                         transporter.sendMail({
+                            //@todo change in production
                             from: 'Биржа запчастей <testingpurposeduck@gmail.com>',
                             //@todo change to client's email in production
-                            to: 'bromshveiger@gmail.com',
+                            to: 'stepansalov@mail.ru',
                             subject: 'У вас новые сообщения',
                             html: html,
                             // generateTextFromHTML: true,
@@ -60,7 +61,6 @@ schedule.scheduleJob('*/1 * * * *', function(){
     emailMap = [];
 });
 
-var isUndefined = require('./utils').isUndefined;
 var emailMap = [];
 
 var transporter = nodemailer.createTransport({
@@ -105,6 +105,74 @@ module.exports = (function(){
                     entry['requests'] = value;
                 }
             }
+        },
+        sendPasswordEmail: function(email, password){
+            emailTemplates(templatesDir, function(err, template) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    var locals = {
+                        email: email,
+                        password: password
+                    };
+                    template('password-letter', locals, function (err, html, text) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            transporter.sendMail({
+                                //@todo change in production
+                                from: 'Биржа запчастей <testingpurposeduck@gmail.com>',
+                                //@todo change in production
+                                to: 'stepansalov@mail.ru',
+                                subject: 'Пароль к вашей учетной записи',
+                                html: html,
+                                // generateTextFromHTML: true,
+                                text: text
+                            }, function (err, responseStatus) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log(responseStatus.message);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        },
+        sendPasswordRestorationEmail: function(email, link){
+            emailTemplates(templatesDir, function(err, template) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    var locals = {
+                        email: email,
+                        link: link
+                    };
+                    template('password-restore-letter', locals, function (err, html, text) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            transporter.sendMail({
+                                //@todo change in production
+                                from: 'Биржа запчастей <testingpurposeduck@gmail.com>',
+                                //@todo change in production
+                                to: 'stepansalov@mail.ru',
+                                subject: 'Восстановление четной записи',
+                                html: html,
+                                // generateTextFromHTML: true,
+                                text: text
+                            }, function (err, responseStatus) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log(responseStatus.message);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         }
     };
 }());

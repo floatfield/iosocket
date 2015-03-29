@@ -83,5 +83,17 @@ module.exports = (function(){
         mailer.scheduleEmail(userEmail, 'request', requests);
     });
 
+    router.post('/password_email', function(req,res){
+        mailer.sendPasswordEmail(req.body.email, req.body.password);
+        res.send({'success': true});
+    });
+
+    router.post('/password_restore', function(req,res){
+        mailer.sendPasswordRestorationEmail(req.body.email, req.body.link);
+        res.send({'success': true});
+    });
+
+
+
     return router;
 }());
