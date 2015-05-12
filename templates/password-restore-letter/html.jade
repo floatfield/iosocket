@@ -1,31 +1,26 @@
 doctype html
 html(lang="en")
     head
-        title= "Пароль к вашей учетной записи"
-        //link(href="../css/style.css" type="text/css")
-        //link(href="../css/template_style_new.css" type="text/css")
     body
+        style
+            | #page-bottom {background-image: url(#{images}back_op_025.png), url(#{images}back_op_075.png),url(#{images}lines_footer.png), linear-gradient(#cf1f36,#9c1022);}
+            | #page-top {background-image: url(#{images}back.png);}
         #page-wrapper
             #page-top.page_container
                 #logo
                     a
-                        img#logo-image(src="/bundles/parts/res/logo.png")
+                        img#logo-image(src=images + 'logo.png')
             #page-middle
                 #sub-nav-container.page_container
                     #sub-nav
                         #sub-nav-cell-left.sub-nav-cell
-                            = "Восстановление пароля"
+                            = "Системное уведомление"
                         #sub-nav-cell-right.sub-nav-cell
                 #content.page_container
-                    h1 #{email}
                     a(href="#{link}") для восстановления пройдите по этой ссылке
         #page-bottom
             #footer.page_container
                 .footer-row
                     .left-cell
-                        img#logo-image-footer(src="bundles/parts/res/logo_footer.png")
+                        img#logo-image-footer(src=images + 'logo_footer.png')
                     .right-cell
-                .footer-row
-                    #footer-nav.left-cell
-                        ul#footer-nav-list
-                    .right-cell= "© 2014 Биржа запчастей"

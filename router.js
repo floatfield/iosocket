@@ -93,7 +93,13 @@ module.exports = (function(){
         res.send({'success': true});
     });
 
-
+    router.post('/user_notification', function(req,res){
+        var emails = req.body.emails.split(','),
+            text = req.body.text;
+        R.forEach(function(email){
+            mailer.sendUserNotifications(email,text);
+        }, emails);
+    });
 
     return router;
 }());

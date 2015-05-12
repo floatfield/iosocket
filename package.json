@@ -15,6 +15,7 @@
     "node-schedule": "~0.2.6",
     "ramda": "~0.13.0",
     "jade": "~1.9.2",
-    "email-templates": "~1.2.1"
+    "email-templates": "~1.2.1",
+    "nodemailer-smtp-transport": "~1.0.3"
   }
 }

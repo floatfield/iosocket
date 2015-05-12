@@ -6,6 +6,7 @@ var multer = require('multer');
 var NodeCache = require('node-cache');
 var myRouter = require('./router');
 var mailer = require('./mailer');
+var express = require('express');
 
 var socketCache = new NodeCache({stdTTL: 20, checkperiod: 25});
 var socketMap = require('collections/fast-map')();
@@ -26,6 +27,7 @@ io.on('connection', factory.getSocketConnectListener(socketMap, socketCache));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+app.use(express.static('public'));
 
 app.use(function(req,res,next){
     req.socketMap = socketMap;
@@ -36,5 +38,4 @@ app.use(function(req,res,next){
 app.use(myRouter);
 
 http.listen(8090, function(){
-    //console.log('listen on *:8090');
 });

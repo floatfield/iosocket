@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
     head
-        title= "Пароль к вашей учетной записи"
+        title= "Системное уведомление"
     body
         style
             | #page-bottom {background-image: url(#{images}back_op_025.png), url(#{images}back_op_075.png),url(#{images}lines_footer.png), linear-gradient(#cf1f36,#9c1022);}
@@ -15,10 +15,11 @@ html(lang="en")
                 #sub-nav-container.page_container
                     #sub-nav
                         #sub-nav-cell-left.sub-nav-cell
-                            = "Пароль к вашей учетной записи"
+                            = "Системное уведомление"
                         #sub-nav-cell-right.sub-nav-cell
                 #content.page_container
-                    div #{password}
+                    h1 #{email}
+                    div #{text}
         #page-bottom
             #footer.page_container
                 .footer-row
