@@ -13,7 +13,7 @@ var path            = require('path'),
         R.flatten,
         R.values
     )(ifaces),
-    imagesUrl = 'http://localhost/bundles/parts/res/',
+    imagesUrl = 'http://' + ownIp + '/bundles/parts/res/',
     smtpPool = require('nodemailer-smtp-pool'),
     smtpConfig = {
         port: 2525,
@@ -199,7 +199,6 @@ module.exports = (function(){
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(html);
                             transporter.sendMail({
                                 from: fromString,
                                 //@todo change in production
