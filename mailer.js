@@ -42,7 +42,7 @@ function sendEmails(users){
                         transporter.sendMail({
                             from: fromString,
                             //@todo change to client's email in production
-                            to: 'bromshveiger@gmail.com',
+                            to: 'stepan_salov@mail.ru',
                             subject: 'У вас есть новые сообщения',
                             html: html,
                             // generateTextFromHTML: true,
@@ -134,7 +134,7 @@ module.exports = (function(){
                             transporter.sendMail({
                                 from: fromString,
                                 //@todo change in production
-                                to: 'bromshveiger@gmail.com',
+                                to: 'stepan_salov@mail.ru',
                                 subject: 'Пароль к вашей учетной записи',
                                 html: html,
                                 // generateTextFromHTML: true,
@@ -168,7 +168,7 @@ module.exports = (function(){
                             transporter.sendMail({
                                 from: fromString,
                                 //@todo change in production
-                                to: 'bromshveiger@gmail.com',
+                                to: 'stepan_salov@mail.ru',
                                 subject: 'Восстановление учетной записи',
                                 html: html,
                                 // generateTextFromHTML: true,
@@ -202,7 +202,7 @@ module.exports = (function(){
                             transporter.sendMail({
                                 from: fromString,
                                 //@todo change in production
-                                to: 'bromshveiger@gmail.com',
+                                to: 'stepan_salov@mail.ru',
                                 subject: 'Системное уведомление',
                                 html: html,
                                 // generateTextFromHTML: true,
